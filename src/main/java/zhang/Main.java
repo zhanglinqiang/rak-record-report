@@ -26,23 +26,23 @@ public class Main {
     private static RakRecordReportGenerator rakRecordReportGenerator = new RakRecordReportGenerator();
 
     public static void main(String[] args) throws IOException, XDocReportException {
-//        if(args.length < 1){
-//            System.err.println("参数错误, 未指定数据源目录");
-//            return;
-//        }
-//        String dirPath = args[0].trim();
-//        File file = new File(dirPath);
-//        if(!(file.exists())){
-//            System.err.println("参数错误, 数据源目录不存在");
-//            return;
-//        }
-//        if(!file.isDirectory()){
-//            System.err.println("参数错误, 数据源目录错误");
-//            return;
-//        }
+        if(args.length < 1){
+            System.err.println("参数错误, 未指定数据源目录");
+            return;
+        }
+        String dirPath = args[0].trim();
+        File file = new File(dirPath);
+        if(!(file.exists())){
+            System.err.println("参数错误, 数据源目录不存在");
+            return;
+        }
+        if(!file.isDirectory()){
+            System.err.println("参数错误, 数据源目录错误");
+            return;
+        }
 
         long start = System.currentTimeMillis();
-        String dirPath = "C:\\Users\\leen\\Desktop\\2021年\\2021年2月份";
+//        String dirPath = "C:\\Users\\leen\\Desktop\\2021年\\2021年2月份";
         String outputDirPath = dirPath + "RAK";
 
         ParseResult parseResult = parseImgInfo(dirPath);

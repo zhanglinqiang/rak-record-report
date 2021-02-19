@@ -14,6 +14,7 @@ import zhang.model.ParseResult;
 import java.io.*;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 
@@ -44,7 +45,9 @@ public class RakRecordReportGenerator {
         for (Map.Entry<String, List<ImgInfo>> entry : groupingByPerson.entrySet()) {
             System.out.println(String.format("正在生成'%s'RAK报告(%d/%d)...", entry.getKey(), (index + 1), size));
             List<OutputModel> outputModels = new ArrayList<>();
-            for (ImgInfo imgInfo : entry.getValue()) {
+            final List<ImgInfo> value = entry.getValue();
+            value.sort(Comparator.comparing(ImgInfo::getDate));
+            for (ImgInfo imgInfo : value) {
                 String message = String.format("%s %s 第  天  计数：", entry.getKey(), new SimpleDateFormat("yyyy-MM-dd").format(imgInfo.getDate()));
                 outputModels.add(new OutputModel(message, new FileImageProvider(new File(imgInfo.getFilepath())), imgInfo.getFilename()));
             }

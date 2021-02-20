@@ -38,7 +38,7 @@ public class RakRecordReportGenerator {
 
 
         List<ImgInfo> imgInfos = parseResult.getImgInfos();
-        Map<String, List<ImgInfo>> groupingByPerson = imgInfos.stream().collect(groupingBy(ImgInfo::getPersonName));
+        Map<String, List<ImgInfo>> groupingByPerson = imgInfos.stream().collect(groupingBy(ImgInfo::getDirName));
 
         int size = groupingByPerson.size();
         int index = 0;

@@ -14,4 +14,5 @@ public class ImgInfo {
     private String filepath;
     private Date date;
     private String personName;
+    private String dirName;
 }

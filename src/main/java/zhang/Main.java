@@ -71,7 +71,8 @@ public class Main {
             directoryStream
                     .forEach(path -> {
                         if (Files.isDirectory(path)) {
-                            String person = path.getFileName().toString()
+                            final String dirName = path.getFileName().toString();
+                            String person = dirName
                                     .replaceAll("\\d*", "")//去掉目录数字
                                     .replace("肿瘤", "");//去掉目录肿瘤字样
 
@@ -108,6 +109,7 @@ public class Main {
                                     imgInfo.setFilename(fileName);
                                     imgInfo.setFilepath(filepath);
                                     imgInfo.setPersonName(person);
+                                    imgInfo.setDirName(dirName);
                                     try {
                                         imgInfo.setDate(new SimpleDateFormat("yyyyMMdd").parse(format));
                                     } catch (ParseException e) {

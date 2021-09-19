@@ -15,7 +15,8 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -110,6 +111,9 @@ public class Main {
                                     imgInfo.setFilepath(filepath);
                                     imgInfo.setPersonName(person);
                                     imgInfo.setDirName(dirName);
+                                    if(fileName.contains("采血单")){
+                                        imgInfo.setOrder(imgInfo.getOrder()-1);
+                                    }
                                     try {
                                         imgInfo.setDate(new SimpleDateFormat("yyyyMMdd").parse(format));
                                     } catch (ParseException e) {

@@ -46,9 +46,9 @@ public class RakRecordReportGenerator {
             System.out.println(String.format("正在生成'%s'RAK报告(%d/%d)...", entry.getKey(), (index + 1), size));
             List<OutputModel> outputModels = new ArrayList<>();
             final List<ImgInfo> value = entry.getValue();
-            value.sort(Comparator.comparing(ImgInfo::getDate));
+            value.sort(Comparator.comparing(ImgInfo::getDate).thenComparing(ImgInfo::getOrder));
             for (ImgInfo imgInfo : value) {
-                String message = String.format("%s %s 第  天  计数：", entry.getKey(), new SimpleDateFormat("yyyy-MM-dd").format(imgInfo.getDate()));
+                String message = String.format("%s   %s 第  天  计数：", entry.getKey(), new SimpleDateFormat("yyyy-MM-dd").format(imgInfo.getDate()));
                 outputModels.add(new OutputModel(message, new FileImageProvider(new File(imgInfo.getFilepath())), imgInfo.getFilename()));
             }
             context.put("outputModels", outputModels);
